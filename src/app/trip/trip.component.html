@@ -23,3 +23,58 @@
         
 
     </form>
+
+    <button (click)="gotoStations()"  class="btn btn-info my-3 ms-2"> go toStations </button>
+
+    
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort  class="table table-striped">
+      
+          <ng-container matColumnDef="startTime">
+            <th mat-header-cell *matHeaderCellDef > startTime </th>
+            <td mat-cell *matCellDef="let row" class="p-2"> {{row.startTime}} </td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="endTime">
+            <th mat-header-cell *matHeaderCellDef  > endTime </th>
+            <td mat-cell *matCellDef="let row" class="p-2"> {{row.endTime}} </td>
+          </ng-container>
+      
+          <!-- Fruit Column -->
+          <ng-container matColumnDef="fromStation" class="text-center">
+            <th mat-header-cell *matHeaderCellDef > fromStation </th>
+            <td mat-cell *matCellDef="let row" class="p-2"> {{row.fromStation}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="toStation">
+            <th mat-header-cell *matHeaderCellDef > toStation </th>
+            <td mat-cell *matCellDef="let row" class="p-2"> {{row.toStation}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="update">
+            <th mat-header-cell *matHeaderCellDef > update </th>
+            <td mat-cell *matCellDef="let row" class="p-2"> 
+                <button (click)="editTrip(row,row.id)"  class="btn btn-warning">update</button>
+               
+                
+             </td>
+          </ng-container>
+
+          <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef > delete </th>
+            <td mat-cell *matCellDef="let row" class="p-2"> 
+                <button (click)="delete(row.id)" class="btn btn-danger">delete</button>
+             </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+          <!-- Row shown when there is no matching data. -->
+          
+        </table>
+      
+        
+      </div>
+</div>      
