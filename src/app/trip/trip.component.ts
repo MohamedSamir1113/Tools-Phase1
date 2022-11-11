@@ -73,7 +73,9 @@ export class TripComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.getAllTrips()
   }
+
 
   getAllTrips() {
     this._TripService.getAll().subscribe(
@@ -88,6 +90,30 @@ export class TripComponent implements OnInit {
         error: (err) => {
           console.log("error")
         }
+      }
+    )
+  }
+  tripId:number=0
+
+  editTrip(data: any, id: number) {
+
+    this.submitBtnTitle="update"
+    this.tripId=id
+    this.tripForm.controls['startTime'].setValue(data.startTime)
+    this.tripForm.controls['endTime'].setValue(data.endTime)
+    this.tripForm.controls['fromStation'].setValue(data.fromStation)
+    this.tripForm.controls['toStation'].setValue(data.toStation)
+
+    }
+
+  delete(id: number) {
+    this._TripService.deleteTrip(id).subscribe(
+      {
+        next: (res) => {
+          this.getAllTrips()
+          console.log("deleted")
+        },
+        error: () => { console.log("error deleting") }
       }
     )
   }
