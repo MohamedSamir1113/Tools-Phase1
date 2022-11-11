@@ -1,1 +1,28 @@
-<p>register works!</p>
+<h2 class="py-2 text-center">Sign Up</h2>
+
+ <!-- {{registerForm.get('user_name')?.getError('minlength') | json }} -->
+  
+<div class="w-75 mx-auto">
+
+    <form (ngSubmit)="submitSignUp(registerForm)" [formGroup]="registerForm">
+        <label for="username">Username:</label>
+        <input formControlName="username" class="form-control mb-2">
+        <div *ngIf="registerForm.get('username')?.errors && registerForm.get('username')?.touched">
+            <p *ngIf="registerForm.get('username')?.getError('required')" class="alert py-1 alert-danger">Name is required</p>
+            <p *ngIf="registerForm.get('username')?.getError('minlength')" class="alert py-1 alert-danger">Min length is 3</p>
+        </div>
+        <label for="password">Password:</label>
+        <input formControlName="password" type="password" class="form-control mb-2">
+
+        <div *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched">
+            <p *ngIf="registerForm.get('password')?.getError('required')" class="alert py-1 alert-danger">Password is required</p>
+            <!-- <p *ngIf="registerForm.get('password')?.getError('pattern')" class="alert py-1 alert-danger">Password shoud include from 3 to 8 charachters </p> -->
+        </div>
+
+        <button type="submit" [disabled]="registerForm.invalid" class="btn btn-danger"> Sign Up</button>
+
+    </form>
+
+   
+
+</div>
