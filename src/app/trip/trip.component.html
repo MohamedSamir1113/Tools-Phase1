@@ -1,1 +1,25 @@
-<p>trip works!</p>
+<h2 class="py-2 text-center">Create a trip</h2>
+
+ <!-- {{tripForm.get('user_name')?.getError('minlength') | json }} -->
+  
+<div class="w-75 mx-auto">
+
+    <form  [formGroup]="tripForm">
+        <label for="startTime">Start Time:</label>
+        <input formControlName="startTime" class="form-control mb-2">
+       
+        <label for="endTime">End Time:</label>
+        <input formControlName="endTime" class="form-control mb-2">
+
+        <label for="fromStation">From :</label>
+        <input formControlName="fromStation" class="form-control mb-2">
+
+        <label for="toStation">To :</label>
+        <input formControlName="toStation" class="form-control mb-2">
+
+       
+
+      <button type="button" (click)="Submit(tripForm)"  class="btn btn-danger my-3"> {{submitBtnTitle}}</button>
+        
+
+    </form>
