@@ -70,7 +70,32 @@ export class TripComponent implements OnInit {
 
   submitBtnTitle : string = "create"
 
+  
+
   ngOnInit(): void {
   }
 
+  getAllTrips() {
+    this._TripService.getAll().subscribe(
+      {
+        next: (res) => {
+
+          this.dataSource = new MatTableDataSource(res)
+           this.tripForm.reset()
+
+
+        },
+        error: (err) => {
+          console.log("error")
+        }
+      }
+    )
+  }
+  
+  gotoStations() 
+  {
+    this.router.navigate(['/station'])
+  }
 }
+
+
