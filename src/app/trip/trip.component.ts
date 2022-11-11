@@ -12,7 +12,8 @@ import { Router } from '@angular/router';
 export class TripComponent implements OnInit {
 
   constructor(private _TripService: TripService, private fb: FormBuilder, private router: Router) { }
-
+  displayedColumns: string[] = ['startTime', 'endTime', 'fromStation', 'toStation', 'update', 'delete'];
+  dataSource!: MatTableDataSource<any>;
   tripForm: FormGroup = new FormGroup(
     {
       startTime: new FormControl(null),
